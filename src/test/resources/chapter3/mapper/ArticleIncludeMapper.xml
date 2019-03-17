@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.coolblog.chapter1.dao2.ArticleDao">
+
+    <sql id="table">
+        ${table_name}
+    </sql>
+
+    <select id="findOne" resultType="xyz.coolblog.chapter3.model.Article">
+        SELECT
+        id, title
+        FROM article
+          <include refid="table">
+              <property name="table_name" value="article"/>
+          </include>
+          where id = #{id}
+    </select>
+
+</mapper>
